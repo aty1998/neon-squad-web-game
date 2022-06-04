@@ -1,24 +1,21 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import HttpException from './exceptions/httpException';
 
-import routes from './routes';
+import mainRouter from './routers/mainRouter';
 
-class App {
-  public server;
+const app = express();
 
-  constructor() {
-    this.server = express();
+app.use(express.json());
 
-    this.middlewares();
-    this.routes();
-  }
+// API routes
+app.use(mainRouter);
 
-  middlewares() {
-    this.server.use(express.json());
-  }
+// Simple error handler
+app.use((err: HttpException, req: Request, res: Response, next: NextFunction) => {
+  const status = err.status || 500;
+  const message = err.message || 'Something went wrong';
+  res.status(status);
+  res.json({ status, message });
+});
 
-  routes() {
-    this.server.use(routes);
-  }
-}
-
-export default new App().server;
+export default app;
