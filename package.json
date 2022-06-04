@@ -1,0 +1,16 @@
+{
+  "name": "@aty1998/neon-squad-web-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "build": "yarn workspaces foreach -pti run build",
+    "start": "yarn workspaces foreach -pi run start",
+    "start:prod": "yarn workspaces foreach -pi run start:prod"
+  }
+}

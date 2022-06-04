@@ -1,0 +1,14 @@
+{
+  "name": "@aty1998/neon-squad-shared",
+  "version": "1.0.0",
+  "main": "./dist/index.ts",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.1",
+  "scripts": {
+    "build": "tsc --project ./",
+    "start": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  }
+}
