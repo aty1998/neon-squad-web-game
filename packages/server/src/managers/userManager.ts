@@ -58,7 +58,7 @@ class UserManager {
    * @returns the newly created User
    */
   newUser(): User {
-    if (this.count <= this.maxCount) {
+    if (this.count > this.maxCount) {
       throw `UserManager reached max user count of ${this.maxCount}.`;
     }
 
@@ -87,4 +87,6 @@ class UserManager {
   }
 }
 
-export default UserManager;
+const userManager = new UserManager(8);
+
+export default userManager;

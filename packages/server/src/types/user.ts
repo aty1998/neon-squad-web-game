@@ -2,9 +2,9 @@ import UserSettings from "./userSettings";
 
 class User {
   id: string;
-  settings: UserSettings;
+  settings: Record<string, any>;
 
-  constructor(id: string, settings?: UserSettings) {
+  constructor(id: string, settings?: Record<string, any>) {
     if (!id) {
       throw "User id must be non-empty and defined."
     }
@@ -12,7 +12,7 @@ class User {
     this.settings = settings ?? this.#getDefaultSettings();
   }
 
-  #getDefaultSettings(): UserSettings {
+  #getDefaultSettings(): Record<string, any> {
     return { name: `user${this.id}`};
   }
 }
